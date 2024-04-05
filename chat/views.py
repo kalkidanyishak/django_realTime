@@ -1,8 +1,12 @@
-from django.shortcuts import render,redirect
+# views.py
+from rest_framework import generics
+from .models import Room, ChatMessage
+from .serializers import RoomSerializer, ChatMessageSerializer
 
-# Create your views here.
-def chatPage(request, *args, **kwargs):
-    if not request.user.is_authenticated:
-        return redirect('login-user')
-    context = {}
-    return render(request,'chat/chatPage.html',context)
+class RoomListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
+
+class ChatMessageListCreateAPIView(generics.ListCreateAPIView):
+    queryset = ChatMessage.objects.all()
+    serializer_class = ChatMessageSerializer
