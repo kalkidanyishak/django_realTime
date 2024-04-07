@@ -143,6 +143,10 @@ CHANNEL_LAYERS = {
     }
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination'
+}
+
 LOGIN_REDIRECT_URL = 'chat-page'
 
 LOGOUT_REDIRECT_URL = 'login-user'
